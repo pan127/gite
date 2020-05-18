@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>遮罩层</title>
+		<meta charset="utf-8">
+		<style>
+			#btn{
+				position: absolute;
+				font-size: 28px;
+				left: 800px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div style="margin:0 auto;height:600px;width:700px;"> 
+		<button id="btn">全屏显示</button>
+			<div id="content" style="margin:0 auto;height:500px;width:700px; background:#ccc;">
+				<h1>全屏显示</h1>
+			</div>
+		</div>
+	</body>
+	<script src="jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+		
+		document.getElementById("btn").onclick=function(){    
+		    var elem = document.getElementById("content");     
+		    requestFullScreen(elem);    
+		};    
+		function requestFullScreen(element) {   
+		    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;   
+		    if (requestMethod) {     
+		        requestMethod.call(element);   
+		    } else if (typeof window.ActiveXObject !== "undefined") {     
+		        var wscript = new ActiveXObject("WScript.Shell");   
+		        if (wscript !== null) {   
+		            wscript.SendKeys("{F11}");   
+		        }   
+		    }   
+		} 
+	</script>
+</html>
